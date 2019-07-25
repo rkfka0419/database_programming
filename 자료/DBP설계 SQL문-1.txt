@@ -1,0 +1,60 @@
+create table employee(
+	ID int,
+    ename varchar(40),
+    grade varchar(20),
+    sex varchar(10),
+    age int,
+    state varchar(20),
+    primary key(ID)
+);
+
+create table department(
+	did int,
+    dname varchar(20),
+	location varchar(30),
+    head varchar(20),
+    primary key(did)
+);
+
+
+create table belong(
+	id int,
+    did int,
+    moveindate varchar(20),
+    primary key(id,did)
+);
+
+create table message(
+	mnumber int, 
+    body varchar(500),
+    PRIMARY key(mnumber)
+);
+drop table  mesegesend;
+create table messagesend(
+	mnumber int,
+    sendtime varchar(50),
+    senderid int,
+    receiverid int,
+    primary key(mnumber,senderid,receiverid)
+);
+
+insert into employee values(2000002,'김대식','부장','남',47,'휴가');
+insert into employee values(2012001,'우상욱','과장','남',25,'휴가');
+insert into employee values(2012002,'정연수','대리','남',25,'외근');
+insert into employee values(2013001,'김철수','대리','남',24,'근무');
+
+insert into department values(0001,'영업부','3102','김부장');
+
+insert into message values(1,'SMS Test입니다.');
+
+insert into belong values(2000002,0001,'2002-04-15');
+
+insert into messagesend values(1,'2017-04-17-04:17',20000002,2012002);   
+
+부서번호 4자리
+사원번호 20120001      (입사년도+번호(4자리))
+
+
+alter table employee add epw varchar(20) not null default '0000';
+alter table employee add part varchar(30) not null default '미정';
+insert into employee values(0000,'admin','관리자','관리자',00,'관리자', '1234', '관리자' );
